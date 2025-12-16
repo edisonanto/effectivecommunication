@@ -1,0 +1,515 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Communication Mastery Infographic</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #F5F5F5;
+            color: #3D3D3D;
+        }
+        .chart-container {
+            position: relative;
+            width: 100%;
+            max-width: 400px;
+            margin-left: auto;
+            margin-right: auto;
+            height: 300px;
+            max-height: 350px;
+        }
+        .text-shadow {
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+        }
+        .loading-spinner {
+            border: 4px solid #f3f3f3;
+            border-top: 4px solid #45B7D1;
+            border-radius: 50%;
+            width: 30px;
+            height: 30px;
+            animation: spin 1s linear infinite;
+            display: none;
+            margin: 0 auto;
+        }
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+    </style>
+</head>
+<body>
+
+    <main class="container mx-auto p-4 md:p-8 max-w-6xl">
+        <header class="text-center my-12 md:my-16">
+            <h1 class="text-4xl md:text-6xl font-black text-shadow mb-4">Communication Mastery</h1>
+            <p class="text-xl text-gray-700 max-w-3xl mx-auto">A 7-episode visual guide to mastering the frameworks that drive results in any business environment.</p>
+        </header>
+
+        <!-- GEMINI API INTEGRATION SECTION -->
+        <section class="my-16 md:my-24 bg-[#5F4B8B] text-white p-6 md:p-10 rounded-lg shadow-2xl">
+            <h2 class="text-3xl font-bold text-center mb-6">Framework Generator ✨</h2>
+            <p class="text-lg text-center mb-8 opacity-90">Instantly generate a structured communication draft for your real-world scenario using any of the 7 models below.</p>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+                <div>
+                    <label for="modelSelect" class="block font-semibold mb-2">1. Choose Communication Model:</label>
+                    <select id="modelSelect" class="w-full p-3 rounded-md text-gray-800 focus:ring-[#F7B801] focus:border-[#F7B801] border-gray-300 shadow-sm">
+                        <option value="SCQA" data-components="Situation, Complication, Question, Answer">SCQA (Work Reporting)</option>
+                        <option value="SMART" data-components="Specific, Measurable, Achievable, Relevant, Time-bound">SMART (Goal Setting)</option>
+                        <option value="5W2H" data-components="Who, What, When, Where, Why, How, How Much">5W2H (Critical Thinking)</option>
+                        <option value="PDCA" data-components="Plan, Do, Check, Act">PDCA (Effective Review)</option>
+                        <option value="ACE" data-components="Alternatives, Criteria, Evaluation">ACE (Decision Making)</option>
+                        <option value="AIDA" data-components="Attention, Interest, Desire, Action">AIDA (Persuasion)</option>
+                        <option value="STAR" data-components="Situation, Task, Action, Result">STAR (Storytelling)</option>
+                    </select>
+                </div>
+                <div>
+                    <label for="scenarioInput" class="block font-semibold mb-2">2. Enter Your Scenario:</label>
+                    <textarea id="scenarioInput" rows="3" class="w-full p-3 rounded-md text-gray-800 focus:ring-[#F7B801] focus:border-[#F7B801] border-gray-300 shadow-sm" placeholder="Example: I need to ask my team lead for budget for a new software tool that costs $5,000."></textarea>
+                </div>
+            </div>
+
+            <div class="text-center">
+                <button id="generateButton" onclick="generateDraft()" class="bg-[#F7B801] hover:bg-[#FF6B6B] text-gray-900 font-bold py-3 px-8 rounded-full shadow-xl transition duration-300 transform hover:scale-105 disabled:opacity-50">
+                    Generate Structured Draft ✨
+                </button>
+            </div>
+
+            <div id="resultsContainer" class="mt-8 bg-white p-6 rounded-lg shadow-inner text-gray-800 min-h-[100px]">
+                <div id="loadingIndicator" class="loading-spinner"></div>
+                <div id="draftOutput" class="prose max-w-none">
+                    <p class="text-center text-gray-500">Your structured communication draft will appear here after generation.</p>
+                </div>
+            </div>
+        </section>
+        <!-- END GEMINI API INTEGRATION SECTION -->
+
+        <section>
+            <h2 class="text-3xl font-bold text-center mb-12">The 7 Core Communication Frameworks</h2>
+            <div class="space-y-12">
+
+                <div class="bg-white rounded-lg shadow-lg p-6 md:p-8">
+                    <div class="flex flex-col sm:flex-row sm:items-center sm:mb-4">
+                        <span class="text-5xl font-black text-[#FF6B6B] mr-4">01</span>
+                        <div>
+                            <h3 class="text-2xl font-bold">Work Reporting - SCQA Model</h3>
+                            <p class="text-lg font-semibold text-[#FF6B6B]">SCQA (Situation-Complication-Question-Answer)</p>
+                        </div>
+                    </div>
+                    <p class="text-gray-700 my-6">A structured framework for reporting work progress and problems that creates a clear narrative and drives action.</p>
+                    <h4 class="font-semibold text-gray-800 mb-4">Framework Components:</h4>
+                    <div class="flex flex-wrap gap-4">
+                        <div class="flex-1 min-w-[120px] bg-gray-50 p-4 rounded-md shadow-sm">
+                            <span class="font-bold text-lg text-[#FF6B6B]">S - Situation</span>
+                            <p class="text-sm text-gray-700 mt-1">Set the context with agreed-upon facts.</p>
+                        </div>
+                        <div class="flex-1 min-w-[120px] bg-gray-50 p-4 rounded-md shadow-sm">
+                            <span class="font-bold text-lg text-[#FF6B6B]">C - Complication</span>
+                            <p class="text-sm text-gray-700 mt-1">Identify the problem or challenge.</p>
+                        </div>
+                        <div class="flex-1 min-w-[120px] bg-gray-50 p-4 rounded-md shadow-sm">
+                            <span class="font-bold text-lg text-[#FF6B6B]">Q - Question</span>
+                            <p class="text-sm text-gray-700 mt-1">Frame the key question to solve.</p>
+                        </div>
+                        <div class="flex-1 min-w-[120px] bg-gray-50 p-4 rounded-md shadow-sm">
+                            <span class="font-bold text-lg text-[#FF6B6B]">A - Answer</span>
+                            <p class="text-sm text-gray-700 mt-1">Provide solution or recommendation.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="bg-white rounded-lg shadow-lg p-6 md:p-8">
+                    <div class="flex flex-col sm:flex-row sm:items-center sm:mb-4">
+                        <span class="text-5xl font-black text-[#4ECDC4] mr-4">02</span>
+                        <div>
+                            <h3 class="text-2xl font-bold">Goal Setting - SMART</h3>
+                            <p class="text-lg font-semibold text-[#4ECDC4]">SMART (Specific, Measurable, Achievable, Relevant, Time-bound)</p>
+                        </div>
+                    </div>
+                    <p class="text-gray-700 my-6">A proven framework to set clear, actionable goals that can be tracked and achieved.</p>
+                    <h4 class="font-semibold text-gray-800 mb-4">Framework Components:</h4>
+                    <div class="flex flex-wrap gap-4">
+                        <div class="flex-1 min-w-[120px] bg-gray-50 p-4 rounded-md shadow-sm">
+                            <span class="font-bold text-lg text-[#4ECDC4]">S - Specific</span>
+                            <p class="text-sm text-gray-700 mt-1">Clearly define what you want to achieve.</p>
+                        </div>
+                        <div class="flex-1 min-w-[120px] bg-gray-50 p-4 rounded-md shadow-sm">
+                            <span class="font-bold text-lg text-[#4ECDC4]">M - Measurable</span>
+                            <p class="text-sm text-gray-700 mt-1">Include metrics to track progress.</p>
+                        </div>
+                        <div class="flex-1 min-w-[120px] bg-gray-50 p-4 rounded-md shadow-sm">
+                            <span class="font-bold text-lg text-[#4ECDC4]">A - Achievable</span>
+                            <p class="text-sm text-gray-700 mt-1">Ensure goal is realistic with available resources.</p>
+                        </div>
+                        <div class="flex-1 min-w-[120px] bg-gray-50 p-4 rounded-md shadow-sm">
+                            <span class="font-bold text-lg text-[#4ECDC4]">R - Relevant</span>
+                            <p class="text-sm text-gray-700 mt-1">Align with team/company objectives.</p>
+                        </div>
+                        <div class="flex-1 min-w-[120px] bg-gray-50 p-4 rounded-md shadow-sm">
+                            <span class="font-bold text-lg text-[#4ECDC4]">T - Time-bound</span>
+                            <p class="text-sm text-gray-700 mt-1">Set clear deadline or timeframe.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="bg-white rounded-lg shadow-lg p-6 md:p-8">
+                    <div class="flex flex-col sm:flex-row sm:items-center sm:mb-4">
+                        <span class="text-5xl font-black text-[#45B7D1] mr-4">03</span>
+                        <div>
+                            <h3 class="text-2xl font-bold">Critical Thinking - 5W2H</h3>
+                            <p class="text-lg font-semibold text-[#45B7D1]">5W2H (Who, What, When, Where, Why, How, How Much)</p>
+                        </div>
+                    </div>
+                    <p class="text-gray-700 my-6">A systematic approach to analyze problems and situations comprehensively before taking action.</p>
+                    <h4 class="font-semibold text-gray-800 mb-4">Framework Components:</h4>
+                    <div class="flex flex-wrap gap-4">
+                        <div class="flex-1 min-w-[120px] bg-gray-50 p-4 rounded-md shadow-sm">
+                            <span class="font-bold text-lg text-[#45B7D1]">Who</span>
+                            <p class="text-sm text-gray-700 mt-1">Who is involved or affected?</p>
+                        </div>
+                        <div class="flex-1 min-w-[120px] bg-gray-50 p-4 rounded-md shadow-sm">
+                            <span class="font-bold text-lg text-[#45B7D1]">What</span>
+                            <p class="text-sm text-gray-700 mt-1">What is the problem or situation?</p>
+                        </div>
+                        <div class="flex-1 min-w-[120px] bg-gray-50 p-4 rounded-md shadow-sm">
+                            <span class="font-bold text-lg text-[#45B7D1]">When</span>
+                            <p class="text-sm text-gray-700 mt-1">When did it occur or when is it needed?</p>
+                        </div>
+                        <div class="flex-1 min-w-[120px] bg-gray-50 p-4 rounded-md shadow-sm">
+                            <span class="font-bold text-lg text-[#45B7D1]">Where</span>
+                            <p class="text-sm text-gray-700 mt-1">Where does it happen or apply?</p>
+                        </div>
+                        <div class="flex-1 min-w-[120px] bg-gray-50 p-4 rounded-md shadow-sm">
+                            <span class="font-bold text-lg text-[#45B7D1]">Why</span>
+                            <p class="text-sm text-gray-700 mt-1">Why is this happening (root cause)?</p>
+                        </div>
+                        <div class="flex-1 min-w-[120px] bg-gray-50 p-4 rounded-md shadow-sm">
+                            <span class="font-bold text-lg text-[#45B7D1]">How</span>
+                            <p class="text-sm text-gray-700 mt-1">How did it occur or how to solve it?</p>
+                        </div>
+                        <div class="flex-1 min-w-[120px] bg-gray-50 p-4 rounded-md shadow-sm">
+                            <span class="font-bold text-lg text-[#45B7D1]">How Much</span>
+                            <p class="text-sm text-gray-700 mt-1">What is the scale or impact?</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="bg-white rounded-lg shadow-lg p-6 md:p-8">
+                    <div class="flex flex-col sm:flex-row sm:items-center sm:mb-4">
+                        <span class="text-5xl font-black text-[#F7B801] mr-4">04</span>
+                        <div>
+                            <h3 class="text-2xl font-bold">Effective Review - PDCA</h3>
+                            <p class="text-lg font-semibold text-[#F7B801]">PDCA (Plan-Do-Check-Act)</p>
+                        </div>
+                    </div>
+                    <p class="text-gray-700 my-6">A continuous improvement cycle for reviewing processes, projects, and performance systematically.</p>
+                    <h4 class="font-semibold text-gray-800 mb-4">Framework Components:</h4>
+                    <div class="flex flex-wrap gap-4">
+                        <div class="flex-1 min-w-[120px] bg-gray-50 p-4 rounded-md shadow-sm">
+                            <span class="font-bold text-lg text-[#F7B801]">Plan</span>
+                            <p class="text-sm text-gray-700 mt-1">Define objectives and set measurable targets.</p>
+                        </div>
+                        <div class="flex-1 min-w-[120px] bg-gray-50 p-4 rounded-md shadow-sm">
+                            <span class="font-bold text-lg text-[#F7B801]">Do</span>
+                            <p class="text-sm text-gray-700 mt-1">Implement the plan on small scale or pilot.</p>
+                        </div>
+                        <div class="flex-1 min-w-[120px] bg-gray-50 p-4 rounded-md shadow-sm">
+                            <span class="font-bold text-lg text-[#F7B801]">Check</span>
+                            <p class="text-sm text-gray-700 mt-1">Measure results against targets, analyze gaps.</p>
+                        </div>
+                        <div class="flex-1 min-w-[120px] bg-gray-50 p-4 rounded-md shadow-sm">
+                            <span class="font-bold text-lg text-[#F7B801]">Act</span>
+                            <p class="text-sm text-gray-700 mt-1">Standardize success or adjust and repeat cycle.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="bg-white rounded-lg shadow-lg p-6 md:p-8">
+                    <div class="flex flex-col sm:flex-row sm:items-center sm:mb-4">
+                        <span class="text-5xl font-black text-[#5F4B8B] mr-4">05</span>
+                        <div>
+                            <h3 class="text-2xl font-bold">Effective Decision Making - ACE</h3>
+                            <p class="text-lg font-semibold text-[#5F4B8B]">ACE (Alternatives-Criteria-Evaluation)</p>
+                        </div>
+                    </div>
+                    <p class="text-gray-700 my-6">A structured approach to decision-making that balances analytical thinking with practical judgment.</p>
+                    <h4 class="font-semibold text-gray-800 mb-4">Framework Components:</h4>
+                    <div class="flex flex-wrap gap-4">
+                        <div class="flex-1 min-w-[120px] bg-gray-50 p-4 rounded-md shadow-sm">
+                            <span class="font-bold text-lg text-[#5F4B8B]">Alternatives</span>
+                            <p class="text-sm text-gray-700 mt-1">List all possible options including your intuitive choice.</p>
+                        </div>
+                        <div class="flex-1 min-w-[120px] bg-gray-50 p-4 rounded-md shadow-sm">
+                            <span class="font-bold text-lg text-[#5F4B8B]">Criteria</span>
+                            <p class="text-sm text-gray-700 mt-1">Define what factors matter for this decision.</p>
+                        </div>
+                        <div class="flex-1 min-w-[120px] bg-gray-50 p-4 rounded-md shadow-sm">
+                            <span class="font-bold text-lg text-[#5F4B8B]">Evaluation</span>
+                            <p class="text-sm text-gray-700 mt-1">Score each alternative against each criterion.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="bg-white rounded-lg shadow-lg p-6 md:p-8">
+                    <div class="flex flex-col sm:flex-row sm:items-center sm:mb-4">
+                        <span class="text-5xl font-black text-[#FF6B6B] mr-4">06</span>
+                        <div>
+                            <h3 class="text-2xl font-bold">Communication - AIDA</h3>
+                            <p class="text-lg font-semibold text-[#FF6B6B]">AIDA (Attention-Interest-Desire-Action)</p>
+                        </div>
+                    </div>
+                    <p class="text-gray-700 my-6">A persuasive communication framework to engage and influence your audience effectively.</p>
+                    <h4 class="font-semibold text-gray-800 mb-4">Framework Components:</h4>
+                    <div class="flex flex-wrap gap-4">
+                        <div class="flex-1 min-w-[120px] bg-gray-50 p-4 rounded-md shadow-sm">
+                            <span class="font-bold text-lg text-[#FF6B6B]">Attention</span>
+                            <p class="text-sm text-gray-700 mt-1">Capture attention with compelling opening.</p>
+                        </div>
+                        <div class="flex-1 min-w-[120px] bg-gray-50 p-4 rounded-md shadow-sm">
+                            <span class="font-bold text-lg text-[#FF6B6B]">Interest</span>
+                            <p class="text-sm text-gray-700 mt-1">Build interest by addressing their needs.</p>
+                        </div>
+                        <div class="flex-1 min-w-[120px] bg-gray-50 p-4 rounded-md shadow-sm">
+                            <span class="font-bold text-lg text-[#FF6B6B]">Desire</span>
+                            <p class="text-sm text-gray-700 mt-1">Create desire by showing benefits and value.</p>
+                        </div>
+                        <div class="flex-1 min-w-[120px] bg-gray-50 p-4 rounded-md shadow-sm">
+                            <span class="font-bold text-lg text-[#FF6B6B]">Action</span>
+                            <p class="text-sm text-gray-700 mt-1">Call to action - what you want them to do next.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="bg-white rounded-lg shadow-lg p-6 md:p-8">
+                    <div class="flex flex-col sm:flex-row sm:items-center sm:mb-4">
+                        <span class="text-5xl font-black text-[#4ECDC4] mr-4">07</span>
+                        <div>
+                            <h3 class="text-2xl font-bold">Storytelling - STAR</h3>
+                            <p class="text-lg font-semibold text-[#4ECDC4]">STAR (Situation-Task-Action-Result)</p>
+                        </div>
+                    </div>
+                    <p class="text-gray-700 my-6">A structured storytelling method to share experiences, demonstrate capabilities, and communicate achievements effectively.</p>
+                    <h4 class="font-semibold text-gray-800 mb-4">Framework Components:</h4>
+                    <div class="flex flex-wrap gap-4">
+                        <div class="flex-1 min-w-[120px] bg-gray-50 p-4 rounded-md shadow-sm">
+                            <span class="font-bold text-lg text-[#4ECDC4]">Situation</span>
+                            <p class="text-sm text-gray-700 mt-1">Set the scene - what was the context?</p>
+                        </div>
+                        <div class="flex-1 min-w-[120px] bg-gray-50 p-4 rounded-md shadow-sm">
+                            <span class="font-bold text-lg text-[#4ECDC4]">Task</span>
+                            <p class="text-sm text-gray-700 mt-1">What was your responsibility or challenge?</p>
+                        </div>
+                        <div class="flex-1 min-w-[120px] bg-gray-50 p-4 rounded-md shadow-sm">
+                            <span class="font-bold text-lg text-[#4ECDC4]">Action</span>
+                            <p class="text-sm text-gray-700 mt-1">What specific steps did YOU take?</p>
+                        </div>
+                        <div class="flex-1 min-w-[120px] bg-gray-50 p-4 rounded-md shadow-sm">
+                            <span class="font-bold text-lg text-[#4ECDC4]">Result</span>
+                            <p class="text-sm text-gray-700 mt-1">What was the outcome? Quantify if possible.</p>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <footer class="text-center mt-16 mb-8 text-gray-600">
+            <p>Master these frameworks to drive action, show leadership, and communicate effectively.</p>
+        </footer>
+
+    </main>
+
+    <script>
+        // API Key placeholder - IMPORTANT: A third party must replace this empty string with their actual Gemini API key for external deployment.
+        const GEMINI_API_KEY = "AIzaSyBhnEMdICzjoPW3Q0RkeTc2Fyvs7LHAT_g"; 
+
+        window.addEventListener('DOMContentLoaded', () => {
+            
+            function wrapLabels(label) {
+                if (label.length > 16) {
+                    const words = label.split(' ');
+                    const lines = [];
+                    let currentLine = '';
+                    for (const word of words) {
+                        if ((currentLine + word).length > 16) {
+                            lines.push(currentLine.trim());
+                            currentLine = word + ' ';
+                        } else {
+                            currentLine += word + ' ';
+                        }
+                    }
+                    lines.push(currentLine.trim());
+                    return lines;
+                }
+                return label;
+            }
+
+            const tooltipTitleCallback = (tooltipItems) => {
+                const item = tooltipItems[0];
+                let label = item.chart.data.labels[item.dataIndex];
+                if (Array.isArray(label)) {
+                    return label.join(' ');
+                } else {
+                    return label;
+                }
+            };
+
+            // This section of code for timeData and the Chart.js instance is no longer used
+            // because the chart container was removed from the HTML.
+            // I will comment out the chart initialization code but keep the utility functions 
+            // just in case they are needed elsewhere later.
+
+            /*
+            const timeData = {
+                labels: [
+                    wrapLabels('Examples (2.5m)'),
+                    wrapLabels('Model Explanation (1.5m)'),
+                    wrapLabels('Introduction (30s)'),
+                    wrapLabels('Key Takeaways (30s)')
+                ],
+                datasets: [{
+                    label: 'Time Breakdown',
+                    data: [2.5, 1.5, 0.5, 0.5],
+                    backgroundColor: [
+                        '#45B7D1',
+                        '#4ECDC4',
+                        '#FF6B6B',
+                        '#F7B801'
+                    ],
+                    borderColor: '#F5F5F5',
+                    borderWidth: 4,
+                    hoverOffset: 8
+                }]
+            };
+
+            const ctx = document.getElementById('timeBreakdownChart')?.getContext('2d');
+            if (ctx) {
+                new Chart(ctx, {
+                    type: 'doughnut',
+                    data: timeData,
+                    options: {
+                        responsive: true,
+                        maintainAspectRatio: false,
+                        plugins: {
+                            legend: {
+                                position: 'bottom',
+                                labels: {
+                                    padding: 15,
+                                    font: {
+                                        size: 14
+                                    }
+                                }
+                            },
+                            tooltip: {
+                                callbacks: {
+                                    title: tooltipTitleCallback
+                                }
+                            }
+                        }
+                    }
+                });
+            }
+            */
+
+
+            const draftOutput = document.getElementById('draftOutput');
+            const loadingIndicator = document.getElementById('loadingIndicator');
+            const generateButton = document.getElementById('generateButton');
+            const modelSelect = document.getElementById('modelSelect');
+            const scenarioInput = document.getElementById('scenarioInput');
+
+            async function fetchWithExponentialBackoff(apiUrl, payload, maxRetries = 5) {
+                // Use the defined API key. If running outside the Canvas environment, this must be a valid key.
+                const apiKey = GEMINI_API_KEY; 
+                const url = `${apiUrl}?key=${apiKey}`;
+                let delay = 1000;
+                for (let i = 0; i < maxRetries; i++) {
+                    try {
+                        const response = await fetch(url, {
+                            method: 'POST',
+                            headers: { 'Content-Type': 'application/json' },
+                            body: JSON.stringify(payload)
+                        });
+
+                        if (response.status === 429) {
+                            await new Promise(resolve => setTimeout(resolve, delay));
+                            delay *= 2;
+                            continue;
+                        }
+
+                        if (!response.ok) {
+                            throw new Error(`API request failed with status: ${response.status}`);
+                        }
+
+                        return await response.json();
+                    } catch (error) {
+                        if (i === maxRetries - 1) throw error;
+                        await new Promise(resolve => setTimeout(resolve, delay));
+                        delay *= 2;
+                    }
+                }
+            }
+
+            window.generateDraft = async function() {
+                const modelName = modelSelect.value;
+                const scenario = scenarioInput.value.trim();
+                const components = modelSelect.options[modelSelect.selectedIndex].getAttribute('data-components');
+
+                if (!scenario) {
+                    draftOutput.innerHTML = '<p class="text-red-500 text-center">Please enter a scenario before generating a draft.</p>';
+                    return;
+                }
+                
+                if (!GEMINI_API_KEY) {
+                    draftOutput.innerHTML = '<p class="text-red-500 text-center">API Key is missing. The developer must insert a valid Gemini API key into the `GEMINI_API_KEY` variable in the script for external use.</p>';
+                    return;
+                }
+
+
+                generateButton.disabled = true;
+                loadingIndicator.style.display = 'block';
+                draftOutput.innerHTML = ''; 
+
+                const systemInstruction = `You are an expert communication coach specializing in business frameworks used by young leaders in the APAC region. Your task is to generate a comprehensive communication draft using the ${modelName} model based on the user's scenario. The model components are: ${components}. You MUST strictly adhere to the following simple Markdown format for the response, using bold headings for the components of the selected model. Do not include any introductory or concluding text, only the structured draft.`;
+                
+                const userQuery = `Generate a structured communication draft using the ${modelName} model for the following scenario: "${scenario}"`;
+
+                const payload = {
+                    contents: [{ parts: [{ text: userQuery }] }],
+                    tools: [{ "google_search": {} }],
+                    systemInstruction: {
+                        parts: [{ text: systemInstruction }]
+                    }
+                };
+                
+                const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-preview-09-2025:generateContent`;
+
+                try {
+                    const result = await fetchWithExponentialBackoff(apiUrl, payload);
+                    const text = result.candidates?.[0]?.content?.parts?.[0]?.text || 'Could not generate a response. Please try a different scenario.';
+
+                    // Simple markdown to HTML conversion for display
+                    const htmlContent = text
+                        .replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>')
+                        .replace(/\n/g, '<br>');
+                    
+                    draftOutput.innerHTML = `<h4 class="text-xl font-bold mb-4 text-[#5F4B8B]">Structured Draft - ${modelName}</h4>${htmlContent}`;
+
+                } catch (error) {
+                    draftOutput.innerHTML = '<p class="text-red-500">An error occurred while connecting to the API. Please check your network or ensure a valid API key is configured.</p>';
+                } finally {
+                    loadingIndicator.style.display = 'none';
+                    generateButton.disabled = false;
+                }
+            }
+        });
+    </script>
+
+</body>
+</html>
